@@ -2,4 +2,4 @@
 
 A collection of beautiful one page designs.
 
-Contribute your own by starting at our [Contributing Guide]()
+Contribute your own by starting at our [Contributing Guide](/contributing.md)
