@@ -26,6 +26,8 @@ The `src` directory is where all of the main code lives.
 
 The `pages` directory in `src` is where each page of the website lives. To create a new page, add a `.js` file with the name of the url slug you want this page to appear under (i.e. `page1.js`).
 
+Keep all styles in the file, or inline with your components. See [`src/components/pages/link`](src/components/pages/link) for an example.
+
 ### `src/components`
 
 The `components` directory in `src` is where any or all components you need for a page should live. To organize the components better, add new components to a folder under your name. (i.e. [`src/components/addison`](src/components/addison/))
