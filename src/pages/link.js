@@ -1,55 +1,52 @@
 import React from "react"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
 
+import * as tree from "../images/addison/tree.svg"
+
 const LinkPage = () => {
+  const numberOfTrees = Array(20).fill()
+
+  function getRandomPosition() {
+    var x = document.body.offsetHeight
+    var y = document.body.offsetWidth
+    var randomX = Math.floor(Math.random() * x)
+    var randomY = Math.floor(Math.random() * y)
+    return [randomX, randomY]
+  }
+
   return (
-    <Layout>
+    <>
       <SEO title="Link" />
-      <div style={{ padding: "6rem" }}>
-        <motion.h1 magic magicId="headline">
-          Hi from the second page
-        </motion.h1>
-      </div>
-      <Link to="/">
-        <div style={{ height: 50, width: 50, backgroundColor: "#000" }}></div>
-      </Link>
       <motion.div
         style={{
           height: "100vh",
-          display: "flex",
-          flexDirection: "column",
+          width: "100vw",
+          margin: "auto auto",
           backgroundColor: "#79C150",
-          textAlign: "center",
         }}
+        id={"color-ball"}
+        magic
+        magicId={"color-ball"}
       >
-        <motion.div
-          id={"color-ball"}
-          magic
-          magicId={"color-ball"}
-          style={{
-            margin: "auto auto 50px",
-            height: 200,
-            width: 200,
-            borderRadius: "50%",
-            background: "#05f",
-          }}
-        />
-        <motion.h1
-          style={{
-            margin: "50px auto auto",
-            fontFamily: "Kite One",
-            color: "#fff",
-          }}
-        >
-          {" "}
-          Welcome to Onepage, a collection of beautiful one page designs.
-        </motion.h1>
+        {numberOfTrees.map(x => {
+          let xy = getRandomPosition()
+
+          return (
+            <img
+              src={tree}
+              style={{
+                position: "absolute",
+                top: xy[0],
+                left: xy[1],
+              }}
+            />
+          )
+        })}
       </motion.div>
-    </Layout>
+    </>
   )
 }
 

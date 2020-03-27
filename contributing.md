@@ -38,4 +38,4 @@ The `images` directory in `src` is where you can place your images, SVGs, or oth
 
 ## Contributing
 
-When you're done with your page, make a [Pull Request](https://github.com/addisonschultz/onepage/pulls)!
+When you're done with your page, make a [Pull Request](https://github.com/addisonschultz/onepage/pulls)! I'll add a link on the front page so you can easily explore all the pages.

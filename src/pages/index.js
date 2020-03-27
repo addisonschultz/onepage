@@ -1,27 +1,17 @@
 import React from "react"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { motion } from "framer-motion"
-import { Link } from "gatsby"
+import ToPage from "../components/ToPage"
 
 const IndexPage = () => (
-  <Layout>
+  <>
     <SEO title="Onepage" />
-    <div style={{ padding: "3rem" }}>
-      <motion.h1 magic magicId="headline">
-        Hi people
-      </motion.h1>
-    </div>
-    <Link to="/link">
-      <div style={{ height: 50, width: 50, backgroundColor: "#79C150" }}></div>
-    </Link>
     <motion.div
       style={{
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#000",
         textAlign: "center",
       }}
     >
@@ -31,23 +21,35 @@ const IndexPage = () => (
         magicId={"color-ball"}
         style={{
           margin: "auto auto 50px",
-          height: 100,
-          width: 100,
-          borderRadius: "50%",
+          height: 130,
+          width: 130,
+          borderRadius: "100%",
           background: "#fff",
         }}
       />
       <motion.h1
         style={{
-          margin: "50px auto auto",
           fontFamily: "Kite One",
+          padding: "50px 0px 0px 0px",
           color: "#fff",
         }}
       >
         Welcome to Onepage, a collection of beautiful one page designs.
       </motion.h1>
+      <motion.div
+        style={{
+          margin: "50px auto auto",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <ToPage to={"/link"} backgroundColor={"#79C150"} />
+        <ToPage to={"#"} backgroundColor={"#ffefa1"} />
+        <ToPage to={"#"} backgroundColor={"#4d12ee"} />
+        <ToPage to={"#"} backgroundColor={"#e67fa2"} />
+      </motion.div>
     </motion.div>
-  </Layout>
+  </>
 )
 
 export default IndexPage
