@@ -34,7 +34,7 @@ const IndexPage = () => (
           color: "#fff",
         }}
       >
-        Welcome to Onepage, a collection of beautiful one page designs.
+        Welcome to Onepage, a collection of one page sites.
       </motion.h1>
       <motion.div
         style={{
@@ -44,9 +44,6 @@ const IndexPage = () => (
         }}
       >
         <ToPage to={"/link"} backgroundColor={"#79C150"} />
-        <ToPage to={"#"} backgroundColor={"#ffefa1"} />
-        <ToPage to={"#"} backgroundColor={"#4d12ee"} />
-        <ToPage to={"#"} backgroundColor={"#e67fa2"} />
       </motion.div>
     </motion.div>
   </>
