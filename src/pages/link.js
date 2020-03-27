@@ -3,7 +3,7 @@ import React from "react"
 import SEO from "../components/seo"
 import { motion } from "framer-motion"
 
-import Joystick from "../components/addison/Joystick"
+import Joystick from "../components/addison/link/Joystick"
 
 import * as tree from "../images/addison/tree.svg"
 
