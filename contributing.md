@@ -28,6 +28,38 @@ The `pages` directory in `src` is where each page of the website lives. To creat
 
 Keep all styles in the file, or inline with your components. See [`src/components/pages/link`](src/components/pages/link) for an example.
 
+When you add your page, start by using this template:
+
+```js
+import React from "react"
+
+import SEO from "../components/seo"
+import { motion } from "framer-motion"
+
+const PageName = () => {
+  return (
+    <>
+      <SEO title="<Page Name>" />
+      <motion.div
+        style={{
+          height: "100vh",
+          width: "100vw",
+          margin: "auto auto",
+          backgroundColor: "<Page Color>",
+        }}
+        id={"color-ball"}
+        magic
+        magicId={"color-ball"}
+      >
+        {/* Place page content here */}
+      </motion.div>
+    </>
+  )
+}
+
+export default PageName
+```
+
 Make sure you keep all of your styles inline to the page, and don't use any css that would select pages outside of the desired context.
 
 ### `src/components`
@@ -43,3 +75,7 @@ The `images` directory in `src` is where you can place your images, SVGs, or oth
 ## Contributing
 
 When you're done with your page, make a [Pull Request](https://github.com/addisonschultz/onepage/pulls)! I'll add a link on the front page so you can easily explore all the pages.
+
+```
+
+```

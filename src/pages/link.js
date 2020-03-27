@@ -1,7 +1,6 @@
 import React from "react"
 
 import SEO from "../components/seo"
-import { Link } from "gatsby"
 import { motion } from "framer-motion"
 
 import * as tree from "../images/addison/tree.svg"
