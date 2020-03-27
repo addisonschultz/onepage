@@ -28,9 +28,13 @@ The `pages` directory in `src` is where each page of the website lives. To creat
 
 Keep all styles in the file, or inline with your components. See [`src/components/pages/link`](src/components/pages/link) for an example.
 
+Make sure you keep all of your styles inline to the page, and don't use any css that would select pages outside of the desired context.
+
 ### `src/components`
 
 The `components` directory in `src` is where any or all components you need for a page should live. To organize the components better, add new components to a folder under your name. (i.e. [`src/components/addison`](src/components/addison/))
+
+Keep your styles inline and scoped to the original component.
 
 ### `src/images`
 
