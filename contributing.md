@@ -32,6 +32,10 @@ Keep all styles in the file, or inline with your components. See [`src/component
 
 The `components` directory in `src` is where any or all components you need for a page should live. To organize the components better, add new components to a folder under your name. (i.e. [`src/components/addison`](src/components/addison/))
 
+### `src/images`
+
+The `images` directory in `src` is where you can place your images, SVGs, or other visual assets. To organize the assets better, add new ones to a folder under your name. (i.e. [`src/images/addison`](src/images/addison/))
+
 ## Contributing
 
 When you're done with your page, make a [Pull Request](https://github.com/addisonschultz/onepage/pulls)!

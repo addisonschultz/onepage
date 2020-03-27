@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { AnimatePresence, MagicMotion } from "framer-motion"
 
 import "./layout.css"
 
@@ -16,15 +17,17 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
-      <div
-        style={{
-          height: "100vh",
-        }}
-      >
+    <div
+      style={{
+        height: "100vh",
+      }}
+    >
+      {/* <AnimatePresence> */}
+      <MagicMotion>
         <main>{children}</main>
-      </div>
-    </>
+      </MagicMotion>
+      {/* </AnimatePresence> */}
+    </div>
   )
 }
 
