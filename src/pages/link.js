@@ -4,6 +4,8 @@ import SEO from "../components/seo"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
 
+import Joystick from "../components/addison/Joystick"
+
 import * as tree from "../images/addison/tree.svg"
 
 const LinkPage = () => {
@@ -12,8 +14,11 @@ const LinkPage = () => {
   function getRandomPosition() {
     var x = document.body.offsetHeight
     var y = document.body.offsetWidth
-    var randomX = Math.floor(Math.random() * x)
-    var randomY = Math.floor(Math.random() * y)
+    console.log(y)
+    console.log(x)
+
+    var randomX = Math.floor(Math.random() * x - 100)
+    var randomY = Math.floor(Math.random() * y - 100)
     return [randomX, randomY]
   }
 
@@ -24,8 +29,10 @@ const LinkPage = () => {
         style={{
           height: "100vh",
           width: "100vw",
+          display: "flex",
           margin: "auto auto",
           backgroundColor: "#79C150",
+          overflow: "hidden",
         }}
         id={"color-ball"}
         magic
@@ -39,12 +46,14 @@ const LinkPage = () => {
               src={tree}
               style={{
                 position: "absolute",
+                marginBottom: 0,
                 top: xy[0],
                 left: xy[1],
               }}
             />
           )
         })}
+        <Joystick style={{ margin: "auto auto" }} />
       </motion.div>
     </>
   )
