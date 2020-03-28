@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   return (
     <div
       style={{
-        height: "100vh",
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         backgroundColor: "#000",
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       }}
     >
       <MagicMotion>
-        <main>{children}</main>
+        <main style={{ height: "100%" }}>{children}</main>
       </MagicMotion>
     </div>
   )
