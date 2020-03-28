@@ -1,47 +1,51 @@
-import React, { useRef, useState } from "react"
+import React, { useRef } from "react"
 import { Canvas, useFrame } from "react-three-fiber"
 import random from "canvas-sketch-util/random"
 
 const getLineProps = i => {
   const n = random.noise1D(i, 0.03, 2)
-  const x = random.noise2D(i, i * 0.1, 0.05)
 
   return {
-    position: [n * 0.5, i - 50, n * 10],
+    position: [n * 0.5, i * 1.25 - 75, n * 10],
     rotation: [0, 0, 0.2 * n],
-    width: Math.abs(n) * 2 + 0.1,
+    args: [Math.abs(n) * 2 + 0.1, 0.25, 0.25, 0.25],
   }
 }
 
 const Segment = props => {
-  const { width = 1 } = props
+  const { index } = props
+  const mesh = useRef()
+  const { args, ...lineProps } = getLineProps(index)
+
+  useFrame(state => {
+    const offset = state.clock.elapsedTime * 10
+    const { position, rotation } = getLineProps(index + offset)
+
+    mesh.current.position.x = position[0]
+    mesh.current.position.z = position[2]
+    mesh.current.rotation.x = rotation[0]
+    mesh.current.rotation.z = rotation[2] * 5
+  })
+
   return (
-    <mesh {...props}>
-      <cylinderBufferGeometry
-        attach="geometry"
-        args={[width, 0.25, 0.25, 0.25]}
-      />
+    <mesh ref={mesh} {...lineProps}>
+      <cylinderBufferGeometry attach="geometry" args={args} />
       <meshBasicMaterial attach="material" color="white" />
     </mesh>
   )
 }
 
 const Lines = props => {
-  const lines = [...new Array(100)]
+  const lines = [...new Array(150)]
   const lineGroup = useRef()
-
-  useFrame(
-    () => (lineGroup.current.rotation.x = lineGroup.current.rotation.y += 0.01)
-  )
-
   random.setSeed(random.getRandomSeed())
 
-  const lineData = lines.map((m, i) => getLineProps(i))
+  useFrame(() => (lineGroup.current.rotation.y += 0.01))
 
   return (
     <group ref={lineGroup}>
-      {lineData.map(lineProps => (
-        <Segment {...lineProps} />
+      {lines.map((l, i) => (
+        <Segment key={i} index={i} />
       ))}
     </group>
   )
@@ -54,9 +58,6 @@ const Line = () => {
       style={{ width: "100%", height: "100%" }}
       camera={{ fov: 75, position: [0, 0, 75] }}
     >
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
-
       <Lines />
     </Canvas>
   )
