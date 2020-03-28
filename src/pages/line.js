@@ -63,7 +63,10 @@ const Line = () => {
       magic
       magicId="color-ball"
     >
-      <Canvas camera={{ fov: 75, position: [0, 0, 75] }}>
+      <Canvas
+        resize={{ debounce: 500 }}
+        camera={{ fov: 75, position: [0, 0, 75] }}
+      >
         <Lines />
       </Canvas>
     </motion.div>
