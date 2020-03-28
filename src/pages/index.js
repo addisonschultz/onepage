@@ -46,7 +46,7 @@ const IndexPage = () => (
         <ToPage to={"/link"} backgroundColor={"#79C150"} />
         <ToPage to={"/zdog"} backgroundColor={"#FFF6D6"} />
         <ToPage to={"/tilt"} backgroundColor={"#E8E0FF"} />
-        <ToPage to={"/line"} backgroundColor={"#000"} />
+        <ToPage to={"/line"} backgroundColor={"#ffffff"} />
       </motion.div>
     </motion.div>
   </>
