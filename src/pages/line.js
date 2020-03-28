@@ -2,60 +2,52 @@ import React, { useRef, useState } from "react"
 import { Canvas, useFrame } from "react-three-fiber"
 import random from "canvas-sketch-util/random"
 
-function Box(props) {
-  // This reference will give us direct access to the mesh
-  const mesh = useRef()
+const getLineProps = i => {
+  const n = random.noise1D(i, 0.03, 2)
+  const x = random.noise2D(i, i * 0.1, 0.05)
 
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false)
-  const [active, setActive] = useState(false)
-
-  // Rotate mesh every frame, this is outside of React without overhead
-  useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
-
-  return (
-    <mesh
-      {...props}
-      ref={mesh}
-      scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-      onClick={e => setActive(!active)}
-      onPointerOver={e => setHover(true)}
-      onPointerOut={e => setHover(false)}
-    >
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <meshStandardMaterial
-        attach="material"
-        color={hovered ? "hotpink" : "orange"}
-      />
-    </mesh>
-  )
+  return {
+    position: [n * 0.5, i - 50, n * 10],
+    rotation: [0, 0, 0.2 * n],
+    width: Math.abs(n) * 2 + 0.1,
+  }
 }
 
 const Segment = props => {
   const { width = 1 } = props
   return (
     <mesh {...props}>
-      <planeBufferGeometry attach="geometry" args={[width, 0.25, 32]} />
+      <cylinderBufferGeometry
+        attach="geometry"
+        args={[width, 0.25, 0.25, 0.25]}
+      />
       <meshBasicMaterial attach="material" color="white" />
     </mesh>
   )
 }
 
-const line = () => {
+const Lines = props => {
   const lines = [...new Array(100)]
+  const lineGroup = useRef()
+
+  useFrame(
+    () => (lineGroup.current.rotation.x = lineGroup.current.rotation.y += 0.01)
+  )
 
   random.setSeed(random.getRandomSeed())
 
-  const lineData = lines.map((m, i) => {
-    const n = random.noise1D(i, 0.05)
+  const lineData = lines.map((m, i) => getLineProps(i))
 
-    return {
-      position: [n * 0.5, i - 50, n],
-      rotation: [0, 0, 0.2 * n],
-      width: Math.abs(n) * 2 + 0.1,
-    }
-  })
+  return (
+    <group ref={lineGroup}>
+      {lineData.map(lineProps => (
+        <Segment {...lineProps} />
+      ))}
+    </group>
+  )
+}
 
+const Line = () => {
   return (
     <Canvas
       pixelRatio={2}
@@ -65,13 +57,9 @@ const line = () => {
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
 
-      {lineData.map(lineProps => (
-        <Segment {...lineProps} />
-      ))}
-      <Segment position={[0, 0, 0]} />
-      <Segment position={[0, 2, 0]} rotation={[0, 0, 0.01]} />
+      <Lines />
     </Canvas>
   )
 }
 
-export default line
+export default Line
