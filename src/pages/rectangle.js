@@ -5,7 +5,7 @@ import frog from "../images/frog.png"
 const Rectangle = () => (
     <>
         <style>{`
-            h1 {
+            .addison {
                 color: red;
             }
 
@@ -15,7 +15,7 @@ const Rectangle = () => (
                 background: cyan;
             }
 
-            img {
+            .img {
                 margin: 0px;
                 // display: none;
                 width: 62px;
@@ -23,7 +23,7 @@ const Rectangle = () => (
                 opacity: 1%;
             }
 
-            img:hover {
+            .img:hover {
                 position:relative;
                 top:25px;
                 left:35px;
@@ -82,10 +82,10 @@ const Rectangle = () => (
             className="rectangle-container">
 
 
-            <h1>hey addison eat frogs</h1>
+            <h1 className="addison">hey addison eat frogs</h1>
 
             <div className="parent">
-<div className="div1"><h1>hey</h1> </div>
+<div className="div1"><h1 className="addison">hey</h1> </div>
 <div className="div2"> </div>
 <div className="div3"> </div>
 <div className="div4"> </div>
@@ -101,10 +101,10 @@ const Rectangle = () => (
 <div className="div14"> </div>
 
 </div>
-<div><img src={frog}/></div>
+<div><img className="img" alt="frog" src={frog}/></div>
 
 <div className="parent">
-<div className="div111"><h1 style={{color:"lightsalmon",}}>hey</h1> </div>
+<div className="div111"><h1 style={{color:"lightsalmon"}}>hey</h1> </div>
 <div className="div112"> </div>
 <div className="div113"> </div>
 <div className="div114"> </div>
