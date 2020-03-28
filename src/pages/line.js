@@ -44,7 +44,7 @@ const Lines = props => {
   const lines = [...new Array(150)]
   const lineGroup = useRef()
   random.setSeed(random.getRandomSeed())
-  useFrame(state => console.log(state.clock.elapsedTime))
+
   useFrame(() => (lineGroup.current.rotation.y += 0.01))
 
   return (
