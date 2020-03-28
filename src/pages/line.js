@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
 import { Canvas, useFrame } from "react-three-fiber"
+import random from "canvas-sketch-util/random"
 
 function Box(props) {
   // This reference will give us direct access to the mesh
@@ -31,27 +32,35 @@ function Box(props) {
 }
 
 const Segment = props => {
+  const { width = 1 } = props
   return (
     <mesh {...props}>
-      <planeBufferGeometry attach="geometry" args={[6, 1, 32]} />
-      <meshBasicMaterial attach="material" color="orange" />
+      <planeBufferGeometry attach="geometry" args={[width, 0.25, 32]} />
+      <meshBasicMaterial attach="material" color="white" />
     </mesh>
   )
 }
 
 const line = () => {
-  const lines = [...new Array(10)]
+  const lines = [...new Array(100)]
 
-  const lineData = lines.map((m, i) => ({
-    position: [0, i * 2, 0],
-    rotation: [0, 0, 0.01 * i],
-  }))
+  random.setSeed(random.getRandomSeed())
+
+  const lineData = lines.map((m, i) => {
+    const n = random.noise1D(i, 0.05)
+
+    return {
+      position: [n * 0.5, i - 50, n],
+      rotation: [0, 0, 0.2 * n],
+      width: Math.abs(n) * 2 + 0.1,
+    }
+  })
 
   return (
     <Canvas
       pixelRatio={2}
       style={{ width: "100%", height: "100%" }}
-      camera={{ fov: 75, position: [0, 0, 100] }}
+      camera={{ fov: 75, position: [0, 0, 75] }}
     >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
