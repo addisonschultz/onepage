@@ -15,22 +15,21 @@ const Rectangle = () => (
                 background: cyan;
             }
 
+            img {
+                margin-bottom: 0px;
+            }
+
             .img {
-                margin: 0px;
-                // display: none;
-                width: 62px;
-                height: 62px;
-                opacity: 1%;
+                margin-bottom: 0px !important;
+                opacity: 0%;
+                margin: 0px !important;
+                display: inline-block;
             }
 
             .img:hover {
                 position:relative;
-                top:25px;
-                left:35px;
-                width:20%;
-                height:20%;
-                display:inline-block;
-                z-index:999;
+                display: inline-block;
+                // z-index:999;
                 opacity: 100%;
             }
 
@@ -101,7 +100,7 @@ const Rectangle = () => (
 <div className="div14"> </div>
 
 </div>
-<div><img className="img" alt="frog" src={frog}/></div>
+
 
 <div className="parent">
 <div className="div111"><h1 style={{color:"lightsalmon"}}>hey</h1> </div>
@@ -112,7 +111,7 @@ const Rectangle = () => (
 <div className="div116"> </div>
 
 <div className="div118"> </div>
-<div className="div119"> </div>
+<div className="div119"> <div className="img"><img  alt="frog" src={frog}/></div> </div>
 
 <div className="div120"> </div>
 <div className="div121"> </div>
