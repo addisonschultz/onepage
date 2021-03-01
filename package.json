@@ -23,7 +23,7 @@
     "react-tilt": "^0.1.4",
     "zdog": "^1.1.1",
     "react-three-fiber": "^4.0.23",
-    "three": "^0.115.0"
+    "three": "^0.125.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
